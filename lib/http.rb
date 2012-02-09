@@ -1,4 +1,5 @@
 require 'http/version'
+require 'http/verbs'
 require 'http/chainable'
 require 'http/client'
 require 'http/mime_type'
