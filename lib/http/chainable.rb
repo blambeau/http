@@ -24,5 +24,15 @@ module Http
       end
     end
 
+    # Make the response friendly
+    def friendly_response(*args)
+      Options::Response.new self, *args
+    end
+
+    # Put a cache in the chain
+    def with_cache(*args)
+      Utils::Cache.new self, *args
+    end
+
   end
 end

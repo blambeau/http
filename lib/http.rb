@@ -6,6 +6,7 @@ require 'http/options/response'
 require 'http/client'
 require 'http/mime_type'
 require 'http/response'
+require 'http/utils/cache'
 
 # THIS IS ENTIRELY TEMPORARY, I ASSURE YOU
 require 'net/https'

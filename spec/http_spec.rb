@@ -32,4 +32,12 @@ describe Http do
       response['content-type'].should match(/html/)
     end
   end
+
+  context "caching results" do
+    it 'should be easy' do
+      handler = Http::Client.new.with_cache("/hello" => "World").friendly_response
+      handler.get("/hello").should eq("World")
+      handler.get(test_endpoint).should match(/<!doctype html>/)
+    end
+  end
 end
