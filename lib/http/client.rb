@@ -1,69 +1,60 @@
 module Http
   # We all know what HTTP clients are, right?
   class Client
-    # I swear I'll document that nebulous options hash
-    def initialize(uri, options = {})
-      @uri     = uri
-      @options = options
-    end
 
     # Request a get sans response body
-    def head(options = {})
-      request :head, options
+    def head(uri, options = {})
+      request :head, uri, options
     end
 
     # Get a resource
-    def get(options = {})
-      request :get, options
+    def get(uri, options = {})
+      request :get, uri, options
     end
 
     # Post to a resource
-    def post(options = {})
-      request :post, options
+    def post(uri, options = {})
+      request :post, uri, options
     end
 
     # Put to a resource
-    def put(options = {})
-      request :put, options
+    def put(uri, options = {})
+      request :put, uri, options
     end
 
     # Delete a resource
-    def delete(options = {})
-      request :delete, options
+    def delete(uri, options = {})
+      request :delete, uri, options
     end
 
     # Echo the request back to the client
-    def trace(options = {})
-      request :trace, options
+    def trace(uri, options = {})
+      request :trace, uri, options
     end
 
     # Return the methods supported on the given URI
-    def options(options = {})
-      request :options, options
+    def options(uri, options = {})
+      request :options, uri, options
     end
 
     # Convert to a transparent TCP/IP tunnel
-    def connect(options = {})
-      request :connect, options
+    def connect(uri, options = {})
+      request :connect, uri, options
     end
 
     # Apply partial modifications to a resource
-    def patch(options = {})
-      request :patch, options
+    def patch(uri, options = {})
+      request :patch, uri, options
     end
 
     # Make an HTTP request
-    def request(verb, options = {})
-      options = @options.merge(options)
-
+    def request(verb, uri, options = {})
       # prepare raw call arguments
-      method    = verb
-      uri       = @uri
       headers   = options[:headers] || {}
       form_data = options[:form]
 
       # make raw call
-      net_http_response = raw_http_call(method, uri, headers, form_data)
+      net_http_response = raw_http_call(verb, uri, headers, form_data)
 
       # convert and return the response
       http_response = convert_response(net_http_response)

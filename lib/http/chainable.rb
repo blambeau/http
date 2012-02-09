@@ -55,7 +55,7 @@ module Http
         headers = default_headers
       end
 
-      Client.new(uri).request verb, options.merge(:headers => headers)
+      Client.new.request verb, uri, options.merge(:headers => headers)
     end
 
     # Make a request with the given headers
