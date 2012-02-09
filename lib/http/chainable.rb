@@ -1,3 +1,4 @@
+require 'http/options/headers'
 require 'http/options/response'
 module Http
   module Chainable
@@ -6,15 +7,10 @@ module Http
     # Make an HTTP request with the given verb
     def request(verb, uri, options = {})
       handler = Client.new
+      handler = Options::Headers.new(handler, default_headers)
       handler = Options::Response.new(handler)
 
-      if options[:headers]
-        headers = default_headers.merge options[:headers]
-      else
-        headers = default_headers
-      end
-
-      handler.request verb, uri, options.merge(:headers => headers)
+      handler.request verb, uri, options
     end
 
     # Make a request with the given headers
