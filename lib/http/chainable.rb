@@ -26,5 +26,3 @@ module Http
 
   end
 end
-require 'http/options/headers'
-require 'http/options/response'

@@ -1,9 +1,10 @@
 require 'http/version'
 require 'http/verbs'
 require 'http/chainable'
+require 'http/options/headers'
+require 'http/options/response'
 require 'http/client'
 require 'http/mime_type'
-require 'http/parameters'
 require 'http/response'
 
 # THIS IS ENTIRELY TEMPORARY, I ASSURE YOU
