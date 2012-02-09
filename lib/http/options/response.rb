@@ -1,6 +1,7 @@
 module Http
   module Options
     class Response
+      include Chainable
 
       def initialize(delegate)
         @delegate = delegate

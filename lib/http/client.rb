@@ -1,7 +1,7 @@
 module Http
   # We all know what HTTP clients are, right?
   class Client
-    include Verbs
+    include Chainable
 
     # Make an HTTP request
     def request(verb, uri, options = {})
